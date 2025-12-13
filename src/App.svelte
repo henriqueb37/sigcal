@@ -56,6 +56,7 @@
         <Calendario {matsSelected} {selection} />
         <Listagem {selection} {search} materias={materias.materias} />
       </div>
+      <div class="info">Atualizado em: {materias?.horaAtualizado}</div>
     {/if}
   </div>
 </main>
@@ -71,6 +72,9 @@
     display: flex;
     flex-direction: row;
     gap: 2rem;
+  }
+  .info {
+    font-size: 0.6rem;
   }
   @media screen and (max-width: 768px) {
     main {
