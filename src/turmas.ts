@@ -1,7 +1,7 @@
 const OFFSET_HORAS = {
   M: 5,
   T: 11,
-  N: 5,
+  N: 17,
 }
 
 export type Horario = {dia: number, from: number, to: number}
