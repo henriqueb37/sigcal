@@ -131,9 +131,9 @@
           <div
             class="conflict"
             style={`grid-area: ${event.from - rowStart + 1} / ${event.dia} / span ${event.to - event.from};`}
-            title={`TURMAS EM CONFLITO: ${event.eventos.join(', ')}`}
           >
-            {event.eventos.length} TURMAS EM CONFLITO!
+            <div class="text">{event.eventos.length} TURMAS EM CONFLITO!</div>
+            <div class="tooltip"><strong>TURMAS EM CONFLITO</strong>: {event.eventos.join(', ')}</div>
           </div>
         {/each}
       </div>
@@ -233,26 +233,51 @@
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   .layerConflicts .conflict {
     position: relative;
     pointer-events: auto;
-    z-index: 10;
+    z-index: 20;
+    background: #ff0000ce;
+  }
+  .conflict .text {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    background: #ff0000ce;
     font-size: 0.8rem;
+    width: 100%;
+    height: 100%;
+  }
+  .conflict .tooltip {
+    display: none;
+    background: #555;
+    color: var(--bg);
+    position: absolute;
+    z-index: 30;
+    font-size: 0.8rem;
+    bottom: 105%;
+    left: -30%;
+    right: -30%;
+    padding: 1em;
+  }
+  .conflict:hover .tooltip {
+    display: block;
   }
   @media screen and (max-width: 768px) {
     .backCell {
-      min-width: 5rem;
+      min-width: 5.5rem;
     }
     .calendarContainer {
       overflow-x: scroll;
+    }
+    .layerEvents .event {
+      overflow-wrap: break-word;
+      /* word-break: break-all; */
+      hyphens: auto;
+      text-wrap: balance;
     }
   }
 </style>

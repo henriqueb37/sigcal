@@ -52,11 +52,16 @@
     {:else if materias.error !== undefined}
       <p>Erro ao procurar matérias.</p>
     {:else}
-      <div class="content">
+      <section class="content">
         <Calendario {matsSelected} {selection} />
         <Listagem {selection} {search} materias={materias.materias} />
-      </div>
-      <div class="info">Atualizado em: {materias?.horaAtualizado}</div>
+      </section>
+      <section class="info">
+        Atualizado em: {materias?.horaAtualizado}. 
+        <a href="https://github.com/henriqueb37/sigcal">
+          <img alt="Github repo" src="https://img.shields.io/badge/github-repo-blue?logo=github">
+        </a>
+      </section>
     {/if}
   </div>
 </main>
@@ -72,9 +77,21 @@
     display: flex;
     flex-direction: row;
     gap: 2rem;
+    min-width: 75rem;
   }
   .info {
     font-size: 0.6rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 0.1rem;
+  }
+  .info a {
+    display: inline-flex;
+  }
+  .info img {
+    height: 1rem;
   }
   @media screen and (max-width: 768px) {
     main {
@@ -82,6 +99,7 @@
     }
     main .container .content {
       flex-direction: column;
+      min-width: unset;
     }
   }
 </style>
